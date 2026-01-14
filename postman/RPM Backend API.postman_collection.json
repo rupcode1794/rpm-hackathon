@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "c7410485-8675-4680-986d-4844e3ab68b6",
+		"name": "RPM Backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50911649",
+		"_collection_link": "https://ruproychowdhury103-6774967.postman.co/workspace/Rup-Roy-Chowdhury's-Workspace~67f4c906-21a4-443a-8f76-af7d5098a30a/collection/50911649-c7410485-8675-4680-986d-4844e3ab68b6?action=share&source=collection_link&creator=50911649"
+	},
+	"item": [
+		{
+			"name": "POST Register Patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Dev\",\r\n  \"contactPhone\": \"9876543200\",\r\n  \"location\": \"Mumbai, Maharashtra\",\r\n  \"description\": \"Test patient for RPM system\",\r\n  \"patientAge\": 45,\r\n  \"height\": 175,\r\n  \"weight\": 70,\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"contactPhone\": \"9876543200\",\r\n  \"password\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Me",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/auth/me",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Assign Device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deviceId\": \"ESP32_001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/devices/assign",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"devices",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Send Vitals",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hr\": 75,\r\n  \"spo2\": 98,\r\n  \"temp\": 36.5,\r\n  \"accMag\": 0.98\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vitals",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vitals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Vitals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hr\": 75,\r\n  \"spo2\": 98,\r\n  \"temp\": 36.5,\r\n  \"accMag\": 0.98\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vitals",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vitals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Vitals ML",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hr\": 75,\r\n  \"spo2\": 98,\r\n  \"temp\": 36.5,\r\n  \"accMag\": 0.98\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/vitals/ml",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"vitals",
+						"ml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ML Results",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"windowTime\": \"2026-01-09T10:40:00.000Z\",\r\n  \"features\": {\r\n    \"hrMean\": 77.5,\r\n    \"hrStd\": 2.5,\r\n    \"spo2Min\": 97,\r\n    \"tempMean\": 36.6,\r\n    \"accMean\": 0.98\r\n  },\r\n  \"anomalyScore\": 0.15,\r\n  \"isAnomaly\": false,\r\n  \"graph\": {\r\n    \"labels\": [\"10:35\", \"10:38\", \"10:40\"],\r\n    \"hrData\": [75, 78, 80],\r\n    \"spo2Data\": [98, 98, 97]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/ml",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ML Results",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"windowTime\": \"2026-01-09T10:40:00.000Z\",\r\n  \"features\": {\r\n    \"hrMean\": 77.5,\r\n    \"hrStd\": 2.5,\r\n    \"spo2Min\": 97,\r\n    \"tempMean\": 36.6,\r\n    \"accMean\": 0.98\r\n  },\r\n  \"anomalyScore\": 0.15,\r\n  \"isAnomaly\": false,\r\n  \"graph\": {\r\n    \"labels\": [\"10:35\", \"10:38\", \"10:40\"],\r\n    \"hrData\": [75, 78, 80],\r\n    \"spo2Data\": [98, 98, 97]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/ml",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-device-id",
+						"value": "ESP32_001",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "x-api-key",
+						"value": "d9496039e34751aaa06a41ac13e09fd1d5c20345ba893301eaa504bc9fcedf9f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"windowTime\": \"2026-01-09T10:40:00.000Z\",\r\n  \"features\": {\r\n    \"hrMean\": 77.5,\r\n    \"hrStd\": 2.5,\r\n    \"spo2Min\": 97,\r\n    \"tempMean\": 36.6,\r\n    \"accMean\": 0.98\r\n  },\r\n  \"anomalyScore\": 0.15,\r\n  \"isAnomaly\": false,\r\n  \"graph\": {\r\n    \"labels\": [\"10:35\", \"10:38\", \"10:40\"],\r\n    \"hrData\": [75, 78, 80],\r\n    \"spo2Data\": [98, 98, 97]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/logout",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
